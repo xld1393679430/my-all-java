@@ -1,0 +1,3 @@
+username=root
+password=123
+email=root@abc.com

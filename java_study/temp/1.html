@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+
+		const obj = {
+			a: 1,
+			b: {
+				c: 2,
+				e: {
+					name: 22
+				},
+				// d: undefined,
+				// f: null
+			}
+		}
+
+		console.time("t2")
+		const newObj = JSON.parse(JSON.stringify(obj))
+		// console.log(22, newObj);
+		console.timeEnd('t2')
+
+
+		//传递一个函数，实现深拷贝
+		console.time("t1")
+		const { port1, port2 } = new MessageChannel();
+		port1.postMessage(obj)
+		port2.onmessage = (e) => {
+			// console.log(11, e.data);
+			console.timeEnd('t1')
+		}
+
+
+		
+		// 封装成一个函数
+		// function deepClone(obj) {
+		// 	return new Promise(resolve => {
+		// 		const { port1, port2 } = new MessageChannel();
+		// 		port1.postMessage(obj);
+		// 		port2.onmessage = ev => resolve(ev.data);
+		// 	});
+		// }
+
+	</script>
+</body>
+
+</html>
